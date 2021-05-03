@@ -1,0 +1,1 @@
+INSERT INTO `gc-server`.inf_device (id, remark, longitude, latitude, address, status, person, phone, for_dept, create_time) VALUES ('A0001', '设备a0001', '140', '12.03', '详细地址1234', 0, '小明', '19900001111', 'admin', '2021-05-03 15:33:13');

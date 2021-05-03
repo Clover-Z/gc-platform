@@ -1,0 +1,1 @@
+INSERT INTO `gc-server`.db_exchange_record (id, txn_date, txn_integral, txn_card, goods_no, goods_count, goods_type, create_time) VALUES ('34567890', '20210503', 500, '2100000000001', 'G000001', 1, '食品', '2021-05-03 16:30:57');

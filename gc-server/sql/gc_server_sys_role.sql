@@ -1,0 +1,1 @@
+INSERT INTO `gc-server`.sys_role (role_id, name, level, description, data_scope, create_by, update_by, create_time, update_time) VALUES (1, '超级管理员', 1, '-', '全部', null, 'admin', '2018-11-23 11:04:37', '2021-05-03 18:03:44');

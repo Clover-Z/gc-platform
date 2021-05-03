@@ -1,0 +1,1 @@
+INSERT INTO `gc-server`.inf_goods (id, name, type, stock, cost, status, create_time) VALUES ('G000001', '哇哈哈AD钙奶一箱', '食品', 99, 500, 1, '2021-05-03 15:40:41');

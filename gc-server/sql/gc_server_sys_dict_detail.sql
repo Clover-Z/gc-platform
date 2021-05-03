@@ -1,0 +1,8 @@
+INSERT INTO `gc-server`.sys_dict_detail (detail_id, dict_id, label, value, dict_sort, create_by, update_by, create_time, update_time) VALUES (1, 1, '激活', 'true', 1, null, null, '2019-10-27 20:31:36', null);
+INSERT INTO `gc-server`.sys_dict_detail (detail_id, dict_id, label, value, dict_sort, create_by, update_by, create_time, update_time) VALUES (2, 1, '禁用', 'false', 2, null, null, null, null);
+INSERT INTO `gc-server`.sys_dict_detail (detail_id, dict_id, label, value, dict_sort, create_by, update_by, create_time, update_time) VALUES (3, 4, '启用', 'true', 1, null, null, null, null);
+INSERT INTO `gc-server`.sys_dict_detail (detail_id, dict_id, label, value, dict_sort, create_by, update_by, create_time, update_time) VALUES (4, 4, '停用', 'false', 2, null, null, '2019-10-27 20:31:36', null);
+INSERT INTO `gc-server`.sys_dict_detail (detail_id, dict_id, label, value, dict_sort, create_by, update_by, create_time, update_time) VALUES (5, 5, '启用', 'true', 1, null, null, null, null);
+INSERT INTO `gc-server`.sys_dict_detail (detail_id, dict_id, label, value, dict_sort, create_by, update_by, create_time, update_time) VALUES (6, 5, '停用', 'false', 2, null, null, '2019-10-27 20:31:36', null);
+INSERT INTO `gc-server`.sys_dict_detail (detail_id, dict_id, label, value, dict_sort, create_by, update_by, create_time, update_time) VALUES (7, 6, '未启用', '0', 1, 'admin', 'admin', '2021-05-02 17:17:27', '2021-05-02 17:18:07');
+INSERT INTO `gc-server`.sys_dict_detail (detail_id, dict_id, label, value, dict_sort, create_by, update_by, create_time, update_time) VALUES (8, 6, '已启用', '1', 2, 'admin', 'admin', '2021-05-02 17:17:43', '2021-05-02 17:18:14');

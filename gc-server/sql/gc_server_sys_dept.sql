@@ -1,0 +1,4 @@
+INSERT INTO `gc-server`.sys_dept (dept_id, pid, sub_count, name, dept_sort, enabled, create_by, update_by, create_time, update_time) VALUES (18, null, 2, '中国总部', 1, true, 'admin', 'admin', '2021-05-03 18:01:31', '2021-05-03 18:01:31');
+INSERT INTO `gc-server`.sys_dept (dept_id, pid, sub_count, name, dept_sort, enabled, create_by, update_by, create_time, update_time) VALUES (19, 18, 0, '北京分部', 1, true, 'admin', 'admin', '2021-05-03 18:01:58', '2021-05-03 18:02:11');
+INSERT INTO `gc-server`.sys_dept (dept_id, pid, sub_count, name, dept_sort, enabled, create_by, update_by, create_time, update_time) VALUES (20, 18, 1, '江苏省分部', 2, true, 'admin', 'admin', '2021-05-03 18:02:41', '2021-05-03 18:02:41');
+INSERT INTO `gc-server`.sys_dept (dept_id, pid, sub_count, name, dept_sort, enabled, create_by, update_by, create_time, update_time) VALUES (21, 20, 0, '南京市分部', 1, true, 'admin', 'admin', '2021-05-03 18:03:04', '2021-05-03 18:03:04');

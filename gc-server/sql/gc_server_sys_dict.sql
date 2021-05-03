@@ -1,0 +1,4 @@
+INSERT INTO `gc-server`.sys_dict (dict_id, name, description, create_by, update_by, create_time, update_time) VALUES (1, 'user_status', '用户状态', null, null, '2019-10-27 20:31:36', null);
+INSERT INTO `gc-server`.sys_dict (dict_id, name, description, create_by, update_by, create_time, update_time) VALUES (4, 'dept_status', '部门状态', null, null, '2019-10-27 20:31:36', null);
+INSERT INTO `gc-server`.sys_dict (dict_id, name, description, create_by, update_by, create_time, update_time) VALUES (5, 'job_status', '岗位状态', null, null, '2019-10-27 20:31:36', null);
+INSERT INTO `gc-server`.sys_dict (dict_id, name, description, create_by, update_by, create_time, update_time) VALUES (6, '设备状态', null, 'admin', 'admin', '2021-05-02 17:17:10', '2021-05-02 17:17:10');

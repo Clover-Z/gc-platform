@@ -1,0 +1,1 @@
+INSERT INTO `gc-server`.sys_users_jobs (user_id, job_id) VALUES (1, 13);
