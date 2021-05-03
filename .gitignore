@@ -1,0 +1,10 @@
+*.iml
+
+gc-server/.idea
+gc-server/gc-common/target
+gc-server/gc-logging/target
+gc-server/gc-system/target
+
+gc-web/.idea
+gc-web/node_modules
+gc-web/public
