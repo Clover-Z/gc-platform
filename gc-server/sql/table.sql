@@ -219,19 +219,4 @@ CREATE TABLE `sys_users_roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='用户角色关联';
 
 
-
--- ----------------------------
--- Table structure for tool_email_config
--- ----------------------------
-DROP TABLE IF EXISTS `tool_email_config`;
-CREATE TABLE `tool_email_config` (
-  `config_id` bigint(20) NOT NULL COMMENT 'ID',
-  `from_user` varchar(255) DEFAULT NULL COMMENT '收件人',
-  `host` varchar(255) DEFAULT NULL COMMENT '邮件服务器SMTP地址',
-  `pass` varchar(255) DEFAULT NULL COMMENT '密码',
-  `port` varchar(255) DEFAULT NULL COMMENT '端口',
-  `user` varchar(255) DEFAULT NULL COMMENT '发件者用户名',
-  PRIMARY KEY (`config_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='邮箱配置';
-
 SET FOREIGN_KEY_CHECKS = 1;
