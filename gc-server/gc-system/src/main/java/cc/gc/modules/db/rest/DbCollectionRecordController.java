@@ -39,7 +39,7 @@ import java.io.IOException;
 **/
 @RestController
 @RequiredArgsConstructor
-@Api(tags = "投放记录维护管理")
+@Api(tags = "平台开放：投放记录维护管理")
 @RequestMapping("/api/dbCollectionRecord")
 public class DbCollectionRecordController {
 

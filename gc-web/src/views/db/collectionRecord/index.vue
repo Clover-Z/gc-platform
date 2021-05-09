@@ -17,17 +17,11 @@
       <!--表单组件-->
       <el-dialog :close-on-click-modal="false" :before-close="crud.cancelCU" :visible.sync="crud.status.cu > 0" :title="crud.status.title" width="600px">
         <el-form ref="form" :model="form" :rules="rules" size="small" label-width="150px">
-          <el-form-item label="交易编号" prop="txn">
-            <el-input v-model="form.txn" style="width: 370px;" />
-          </el-form-item>
           <el-form-item label="交易卡号" prop="txnCard">
             <el-input v-model="form.txnCard" style="width: 370px;" />
           </el-form-item>
           <el-form-item label="交易设备号" prop="txnDevice">
             <el-input v-model="form.txnDevice" style="width: 370px;" />
-          </el-form-item>
-          <el-form-item label="交易日期" prop="txnDate">
-            <el-date-picker v-model="form.txnDate" type="date" style="width: 370px;" value-format="yyyyMMdd" />
           </el-form-item>
           <el-form-item label="垃圾类别" prop="gcType">
             <el-select v-model="form.gcType" style="width: 370px;">
@@ -102,14 +96,8 @@ export default {
         del: ['admin', 'dbCollectionRecord:del']
       },
       rules: {
-        txn: [
-          { required: true, message: '交易编号不能为空', trigger: 'blur' }
-        ],
         txnCard: [
           { required: true, message: '交易卡号不能为空', trigger: 'blur' }
-        ],
-        txnDate: [
-          { required: true, message: '交易日期 yyyyMMdd不能为空', trigger: 'blur' }
         ],
         gcType: [
           { required: true, message: '垃圾类别不能为空', trigger: 'blur' }

@@ -37,7 +37,7 @@ import javax.servlet.http.HttpServletResponse;
 **/
 @RestController
 @RequiredArgsConstructor
-@Api(tags = "设备信息维护管理")
+@Api(tags = "信息：设备信息维护管理")
 @RequestMapping("/api/infDevice")
 public class InfDeviceController {
 

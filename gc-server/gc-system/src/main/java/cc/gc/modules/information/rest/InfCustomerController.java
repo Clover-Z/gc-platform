@@ -39,7 +39,7 @@ import java.io.IOException;
 **/
 @RestController
 @RequiredArgsConstructor
-@Api(tags = "客户信息维护管理")
+@Api(tags = "信息：客户信息维护管理")
 @RequestMapping("/api/infCustomer")
 public class InfCustomerController {
 

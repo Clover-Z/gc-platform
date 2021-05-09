@@ -46,7 +46,6 @@ public class DbCollectionRecord implements Serializable {
     private String txnCard;
 
     @Column(name = "txn_date",nullable = false)
-    @NotBlank
     @ApiModelProperty(value = "交易日期 yyyyMMdd")
     private String txnDate;
 

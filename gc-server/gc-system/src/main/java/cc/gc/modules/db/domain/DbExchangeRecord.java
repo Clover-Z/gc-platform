@@ -47,7 +47,6 @@ public class DbExchangeRecord implements Serializable {
     private String id;
 
     @Column(name = "txn_date",nullable = false)
-    @NotBlank
     @ApiModelProperty(value = "交易日期yyyyMMdd")
     private String txnDate;
 

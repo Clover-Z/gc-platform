@@ -30,6 +30,7 @@ import cc.gc.utils.FileUtil;
 import cc.gc.utils.PageUtil;
 import cc.gc.utils.QueryHelp;
 import cc.gc.utils.ValidationUtil;
+import cn.hutool.core.util.IdUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -40,6 +41,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -83,11 +85,8 @@ public class DbCollectionRecordServiceImpl implements DbCollectionRecordService 
     @Override
     @Transactional(rollbackFor = Exception.class)
     public DbCollectionRecordDto create(DbCollectionRecord resources) {
-        DbCollectionRecord r = dbCollectionRecordRepository.findById(resources.getTxn()).orElseGet(DbCollectionRecord::new);
-        if (r.getTxn() != null) {
-            //幂等
-            return dbCollectionRecordMapper.toDto(r);
-        }
+        resources.setTxn(IdUtil.simpleUUID());
+        resources.setTxnDate((DateTimeFormatter.ofPattern("yyyyMMdd")).format(LocalDateTime.now()));
 
         //验证设备号
         InfDevice device = infDeviceRepository.findById(resources.getTxnDevice()).orElseGet(InfDevice::new);

@@ -19,12 +19,6 @@
       <!--表单组件-->
       <el-dialog :close-on-click-modal="false" :before-close="crud.cancelCU" :visible.sync="crud.status.cu > 0" :title="crud.status.title" width="600px">
         <el-form ref="form" :model="form" :rules="rules" size="small" label-width="150px">
-          <el-form-item label="交易编号" prop="id">
-            <el-input v-model="form.id" style="width: 370px;" />
-          </el-form-item>
-          <el-form-item label="交易日期" prop="txnDate">
-            <el-date-picker v-model="form.txnDate" type="date" style="width: 370px;" value-format="yyyyMMdd" />
-          </el-form-item>
           <el-form-item label="交易卡号" prop="txnCard">
             <el-input v-model="form.txnCard" style="width: 370px;" />
           </el-form-item>
@@ -94,12 +88,6 @@ export default {
         del: ['admin', 'dbExchangeRecord:del']
       },
       rules: {
-        id: [
-          { required: true, message: '交易编号不能为空', trigger: 'blur' }
-        ],
-        txnDate: [
-          { required: true, message: '交易日期不能为空', trigger: 'blur' }
-        ],
         txnIntegral: [
           { required: true, message: '交易花费积分不能为空', trigger: 'blur' }
         ],

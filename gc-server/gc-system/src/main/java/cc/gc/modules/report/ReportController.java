@@ -21,7 +21,7 @@ import java.util.function.Function;
 
 @RestController
 @RequiredArgsConstructor
-@Api("报表接口")
+@Api(tags = "统计：报表接口")
 @RequestMapping("/api/report")
 public class ReportController {
 

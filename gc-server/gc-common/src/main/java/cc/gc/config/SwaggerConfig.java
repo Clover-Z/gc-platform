@@ -82,9 +82,9 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .description("一个简单且易上手的 Spring boot 后台管理框架")
-                .title("EL-ADMIN 接口文档")
-                .version("2.4")
+                .description("智能垃圾分类系统 - 平台对外开放接口文档")
+                .title("平台开放接口文档")
+                .version("2.6")
                 .build();
     }
 

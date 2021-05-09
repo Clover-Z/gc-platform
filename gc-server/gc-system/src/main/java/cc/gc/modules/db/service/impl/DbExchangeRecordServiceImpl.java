@@ -30,6 +30,7 @@ import cc.gc.utils.FileUtil;
 import cc.gc.utils.PageUtil;
 import cc.gc.utils.QueryHelp;
 import cc.gc.utils.ValidationUtil;
+import cn.hutool.core.util.IdUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -38,6 +39,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -81,8 +84,8 @@ public class DbExchangeRecordServiceImpl implements DbExchangeRecordService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public DbExchangeRecordDto create(DbExchangeRecord resources) {
-        DbExchangeRecord r = dbExchangeRecordRepository.findById(resources.getId()).orElseGet(DbExchangeRecord::new);
-        if (r.getId() != null) return dbExchangeRecordMapper.toDto(r); //幂等
+        resources.setId(IdUtil.simpleUUID());
+        resources.setTxnDate((DateTimeFormatter.ofPattern("yyyyMMdd")).format(LocalDateTime.now()));
 
         synchronized (this) {
             //验证商品

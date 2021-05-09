@@ -23,10 +23,10 @@
 <!--            <el-input v-model="form.id" style="width: 370px;" />-->
 <!--          </el-form-item>-->
           <el-form-item label="持卡人姓名" prop="name">
-            <el-input v-model="form.name" style="width: 370px;" />
+            <el-input v-model="form.name" style="width: 370px;" :disabled="crud.status.edit == 1" />
           </el-form-item>
-          <el-form-item label="卡号" prop="cardno">
-            <el-input v-model="form.cardNo" style="width: 370px;" />
+          <el-form-item label="卡号" prop="cardNo">
+            <el-input v-model="form.cardNo" style="width: 370px;" :disabled="crud.status.edit == 1" />
           </el-form-item>
           <el-form-item label="地址" prop="address">
             <el-input v-model="form.address" style="width: 370px;" />

@@ -67,6 +67,8 @@ export default {
     return {
       panelData: [0, 0, 0, 0],
       duration: 6000,
+
+      timer: ''
     }
   },
   methods: {
@@ -82,8 +84,14 @@ export default {
 
   },
 
+  mounted() {
+    this.timer = setInterval(this.loadPanelData, 1000 * 3)
+  },
   created() {
     this.loadPanelData();
+  },
+  beforeDestroy() {
+    clearInterval(this.timer);
   }
 }
 </script>

@@ -27,7 +27,7 @@
       <el-dialog :close-on-click-modal="false" :before-close="crud.cancelCU" :visible.sync="crud.status.cu > 0" :title="crud.status.title" width="600px">
         <el-form ref="form" :model="form" :rules="rules" size="small" label-width="150px">
           <el-form-item label="商品id" prop="id">
-            <el-input v-model="form.id" style="width: 370px;" />
+            <el-input v-model="form.id" style="width: 370px;" :disabled="crud.status.edit == 1"/>
           </el-form-item>
           <el-form-item label="商品名称" prop="name">
             <el-input v-model="form.name" style="width: 370px;" />
@@ -37,7 +37,7 @@
               <el-option v-for="item in goodsType" :key="item" :value="item" :label="item"></el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="商品数量" prop="stock">
+          <el-form-item label="商品库存" prop="stock">
             <el-input v-model="form.stock" style="width: 370px;" />
           </el-form-item>
           <el-form-item label="兑换所需积分" prop="cost">
@@ -63,7 +63,7 @@
         <el-table-column prop="id" label="商品id" />
         <el-table-column prop="name" label="商品名称" />
         <el-table-column prop="type" label="商品分类" />
-        <el-table-column prop="stock" label="商品数量" />
+        <el-table-column prop="stock" label="商品库存" />
         <el-table-column prop="cost" label="兑换所需积分" />
         <el-table-column prop="status" label="状态" :formatter="statusFormatter" />
         <el-table-column prop="createTime" label="创建时间">
@@ -71,18 +71,45 @@
             <span>{{ parseTime(scope.row.createTime) }}</span>
           </template>
         </el-table-column>
-        <el-table-column v-permission="['admin','infGoods:edit','infGoods:del']" label="操作" width="150px" align="center">
+        <el-table-column v-permission="['admin','infGoods:edit','infGoods:del']" label="操作" width="200px" align="center">
           <template slot-scope="scope">
             <udOperation
               :data="scope.row"
               :permission="permission"
-            />
+            >
+              <el-button icon="el-icon-goods" type="warning" size="mini" @click="openExDiv(scope.row)" :disabled="scope.row.status != 1"></el-button>
+            </udOperation>
           </template>
         </el-table-column>
       </el-table>
       <!--分页组件-->
       <pagination />
     </div>
+
+
+    <el-dialog title="兑换明细" :visible.sync="exchangeVisible" width="600px">
+      <el-form ref="exForm" :model="exForm" :rules="exRules" size="small" label-width="150px">
+        <el-form-item label="商品编号" prop="goodsNo">
+          <el-input v-model="exForm.goodsNo" style="width: 370px;" disabled />
+        </el-form-item>
+        <el-form-item label="商品分类" prop="type">
+          <el-select v-model="exForm.type" style="width: 370px;" disabled>
+            <el-option v-for="item in goodsType" :key="item" :value="item" :label="item"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="兑换人账号" prop="txnCard">
+          <el-input v-model="exForm.txnCard" style="width: 370px;" />
+        </el-form-item>
+        <el-form-item label="兑换数量" prop="goodsCount">
+          <el-input v-model="exForm.goodsCount" style="width: 370px;" />
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button type="text" @click="exchangeVisible = false">取消</el-button>
+        <el-button type="primary" @click="exchangeSubmit">确认兑换</el-button>
+      </div>
+    </el-dialog>
+
   </div>
 </template>
 
@@ -93,6 +120,7 @@ import rrOperation from '@crud/RR.operation'
 import crudOperation from '@crud/CRUD.operation'
 import udOperation from '@crud/UD.operation'
 import pagination from '@crud/Pagination'
+import { add } from '@/api/db/dbExchangeRecord'
 
 const defaultForm = { id: null, name: null, type: null, stock: null, cost: null, status: null, createTime: null }
 export default {
@@ -130,26 +158,39 @@ export default {
           { required: true, message: '商品分类不能为空', trigger: 'blur' }
         ],
         stock: [
-          { required: true, message: '商品数量不能为空', trigger: 'blur' }
+          { required: true, message: '商品库存不能为空', trigger: 'blur' }
         ],
         cost: [
           { required: true, message: '兑换所需积分不能为空', trigger: 'blur' }
         ],
         status: [
           { required: true, message: '状态不能为空', trigger: 'blur' }
-        ],
-        createTime: [
-          { required: true, message: '创建时间不能为空', trigger: 'blur' }
         ]
       },
       queryTypeOptions: [
         { key: 'id', display_name: '商品id' },
         { key: 'name', display_name: '商品名称' },
         { key: 'type', display_name: '商品分类' },
-        { key: 'stock', display_name: '商品数量' },
+        { key: 'stock', display_name: '库存' },
         { key: 'cost', display_name: '兑换所需积分' },
         { key: 'status', display_name: '状态' }
-      ]
+      ],
+
+      exchangeVisible: false,
+      exForm: {
+        txnCard: '',
+        goodsNo: '',
+        goodsCount: 1,
+        goodsName: ''
+      },
+      exRules: {
+        txnCard: [
+          { required: true, message: '兑换人账号', trigger: 'blur' }
+        ],
+        goodsCount: [
+          { required: true, message: '商品兑换数量不能为空', trigger: 'blur' }
+        ]
+      },
     }
   },
   methods: {
@@ -166,7 +207,18 @@ export default {
         case 2: t += '-已下架'; break;
       }
       return t
+    },
+
+    openExDiv(row) {
+      this.exForm.goodsNo = row.id;
+      this.exForm.type = row.type;
+      this.exchangeVisible = true;
+    },
+
+    exchangeSubmit() {
+      add(this.exForm);
     }
+
   }
 }
 </script>
