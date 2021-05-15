@@ -30,6 +30,20 @@ import './assets/icons' // icon
 import './router/index' // permission control
 import 'echarts-gl'
 
+import AMap from 'vue-amap';
+Vue.use(AMap);
+
+// 初始化vue-amap
+AMap.initAMapApiLoader({
+  // 高德key
+  key: 'afe8c1605f99684efe5c332c9cc4acc5',
+  // 插件集合 （插件按需引入）
+  plugin: ['AMap.Autocomplete', 'AMap.PlaceSearch','AMap.Scale', 'AMap.OverView', 'AMap.ToolBar',
+    'AMap.MapType', 'AMap.Geolocation','AMap.Geocoder', 'AMap.AMapManager', 'AMap.Marker'],
+  v: '1.4.4', //版本
+  uiVersion: '1.0' //ui版本
+});
+
 Vue.use(VueHighlightJS)
 Vue.use(mavonEditor)
 Vue.use(permission)

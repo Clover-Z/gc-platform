@@ -40,7 +40,6 @@ export default {
     chartData: {
       deep: true,
       handler(val) {
-        console.log("Ok11")
         this.setOptions(val)
       }
     }

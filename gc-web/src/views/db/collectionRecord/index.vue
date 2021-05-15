@@ -86,7 +86,7 @@ export default {
   components: { pagination, crudOperation, rrOperation, udOperation },
   mixins: [presenter(), header(), form(defaultForm), crud()],
   cruds() {
-    return CRUD({ title: '投放记录维护', url: 'api/dbCollectionRecord', idField: 'txn', sort: 'txn,desc', crudMethod: { ...crudDbCollectionRecord }})
+    return CRUD({ title: '投放记录维护', url: 'api/dbCollectionRecord', idField: 'txn', sort: 'createTime,desc', crudMethod: { ...crudDbCollectionRecord }})
   },
   data() {
     return {

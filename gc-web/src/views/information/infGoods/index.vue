@@ -128,7 +128,7 @@ export default {
   components: { pagination, crudOperation, rrOperation, udOperation },
   mixins: [presenter(), header(), form(defaultForm), crud()],
   cruds() {
-    return CRUD({ title: '兑换商品信息维护', url: 'api/infGoods', idField: 'id', sort: 'id,desc', crudMethod: { ...crudInfGoods }})
+    return CRUD({ title: '兑换商品信息维护', url: 'api/infGoods', idField: 'id', sort: 'createTime,desc', crudMethod: { ...crudInfGoods }})
   },
   data() {
     return {
@@ -217,6 +217,7 @@ export default {
 
     exchangeSubmit() {
       add(this.exForm);
+      this.exchangeVisible = false;
     }
 
   }

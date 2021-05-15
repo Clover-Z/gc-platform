@@ -90,7 +90,7 @@ export default {
   components: { pagination, crudOperation, rrOperation, udOperation },
   mixins: [presenter(), header(), form(defaultForm), crud()],
   cruds() {
-    return CRUD({ title: '客户信息维护', url: 'api/infCustomer', idField: 'id', sort: 'id,desc', crudMethod: { ...crudInfCustomer }})
+    return CRUD({ title: '客户信息维护', url: 'api/infCustomer', idField: 'id', sort: 'createTime,desc', crudMethod: { ...crudInfCustomer }})
   },
   data() {
     return {
